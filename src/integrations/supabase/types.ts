@@ -14,13 +14,256 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ai_logs: {
+        Row: {
+          action: string
+          business_id: string | null
+          created_at: string
+          id: string
+          payload: Json | null
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          business_id?: string | null
+          created_at?: string
+          id?: string
+          payload?: Json | null
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          business_id?: string | null
+          created_at?: string
+          id?: string
+          payload?: Json | null
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_logs_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      businesses: {
+        Row: {
+          created_at: string
+          id: string
+          industry: string | null
+          name: string
+          primary_channel: string | null
+          revenue_goal: number | null
+          timezone: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          industry?: string | null
+          name: string
+          primary_channel?: string | null
+          revenue_goal?: number | null
+          timezone?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          industry?: string | null
+          name?: string
+          primary_channel?: string | null
+          revenue_goal?: number | null
+          timezone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      integrations: {
+        Row: {
+          access_token: string | null
+          business_id: string
+          created_at: string
+          id: string
+          last_sync: string | null
+          provider: string
+          refresh_token: string | null
+          scopes: string[] | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          access_token?: string | null
+          business_id: string
+          created_at?: string
+          id?: string
+          last_sync?: string | null
+          provider: string
+          refresh_token?: string | null
+          scopes?: string[] | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          access_token?: string | null
+          business_id?: string
+          created_at?: string
+          id?: string
+          last_sync?: string | null
+          provider?: string
+          refresh_token?: string | null
+          scopes?: string[] | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integrations_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      metrics: {
+        Row: {
+          business_id: string
+          created_at: string
+          date: string
+          id: string
+          metric_key: string
+          metric_value: number | null
+          source: string
+        }
+        Insert: {
+          business_id: string
+          created_at?: string
+          date: string
+          id?: string
+          metric_key: string
+          metric_value?: number | null
+          source: string
+        }
+        Update: {
+          business_id?: string
+          created_at?: string
+          date?: string
+          id?: string
+          metric_key?: string
+          metric_value?: number | null
+          source?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "metrics_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          business_id: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          onboarded: boolean
+          role: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          business_id?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          onboarded?: boolean
+          role?: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          business_id?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          onboarded?: boolean
+          role?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reviews: {
+        Row: {
+          author: string | null
+          business_id: string
+          content: string | null
+          created_at: string
+          id: string
+          platform: string
+          rating: number | null
+          responded: boolean
+          response_content: string | null
+          sentiment: string | null
+        }
+        Insert: {
+          author?: string | null
+          business_id: string
+          content?: string | null
+          created_at?: string
+          id?: string
+          platform: string
+          rating?: number | null
+          responded?: boolean
+          response_content?: string | null
+          sentiment?: string | null
+        }
+        Update: {
+          author?: string | null
+          business_id?: string
+          content?: string | null
+          created_at?: string
+          id?: string
+          platform?: string
+          rating?: number | null
+          responded?: boolean
+          response_content?: string | null
+          sentiment?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_business_id_fkey"
+            columns: ["business_id"]
+            isOneToOne: false
+            referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      current_business_id: { Args: never; Returns: string }
     }
     Enums: {
       [_ in never]: never
