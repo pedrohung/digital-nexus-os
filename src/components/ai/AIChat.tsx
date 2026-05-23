@@ -43,7 +43,7 @@ export function AIChat() {
     setMessages((m) => [...m, { role: "user", content: text }]);
     setLoading(true);
     try {
-      const res = await chatFn({ data: { message: text } });
+      const res = (await chatFn({ data: { message: text } })) as { text: string; actions: AiAction[]; logId: string | null };
       setMessages((m) => [...m, { role: "assistant", content: res.text, actions: res.actions, logId: res.logId }]);
     } catch (err) {
       setMessages((m) => [

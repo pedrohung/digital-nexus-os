@@ -6,11 +6,14 @@ const ChatSchema = z.object({
   message: z.string().trim().min(1).max(2000),
 });
 
+type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
+
 export interface AiAction {
   type: string;
   description: string;
-  payload: Record<string, unknown>;
+  payload: { [k: string]: JsonValue };
   requiresApproval: boolean;
+  [k: string]: JsonValue;
 }
 
 export interface AiResponse {
