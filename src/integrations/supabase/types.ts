@@ -258,6 +258,51 @@ export type Database = {
           },
         ]
       }
+      seo_keywords: {
+        Row: {
+          business_id: string
+          created_at: string
+          difficulty: number | null
+          id: string
+          intent: string | null
+          keyword: string
+          last_checked_at: string | null
+          position: number | null
+          previous_position: number | null
+          search_volume: number | null
+          target_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          business_id: string
+          created_at?: string
+          difficulty?: number | null
+          id?: string
+          intent?: string | null
+          keyword: string
+          last_checked_at?: string | null
+          position?: number | null
+          previous_position?: number | null
+          search_volume?: number | null
+          target_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          business_id?: string
+          created_at?: string
+          difficulty?: number | null
+          id?: string
+          intent?: string | null
+          keyword?: string
+          last_checked_at?: string | null
+          position?: number | null
+          previous_position?: number | null
+          search_volume?: number | null
+          target_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
