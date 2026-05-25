@@ -88,8 +88,7 @@ function AgencyPage() {
     <div className="p-8 max-w-6xl mx-auto space-y-8">
       <PageHeader
         title="Consola de Agencia"
-        description="Marca blanca y administración de clientes vinculados."
-        icon={Building2}
+        subtitle="Marca blanca y administración de clientes vinculados."
       />
 
       <div className="grid lg:grid-cols-2 gap-6">

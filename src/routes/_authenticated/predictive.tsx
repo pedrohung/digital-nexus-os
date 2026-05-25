@@ -52,8 +52,7 @@ function PredictivePage() {
     <div className="p-8 max-w-6xl mx-auto space-y-8">
       <PageHeader
         title="Simulador Predictivo"
-        description="Reasigna presupuesto entre canales y proyecta ROAS antes de ejecutar."
-        icon={Sparkles}
+        subtitle="Reasigna presupuesto entre canales y proyecta ROAS antes de ejecutar."
       />
 
       <div className="grid lg:grid-cols-2 gap-6">
