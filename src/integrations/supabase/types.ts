@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      agency_configs: {
+        Row: {
+          agency_business_id: string
+          created_at: string
+          custom_domain: string | null
+          id: string
+          logo_url: string | null
+          primary_color: string
+          updated_at: string
+          white_label_enabled: boolean
+        }
+        Insert: {
+          agency_business_id: string
+          created_at?: string
+          custom_domain?: string | null
+          id?: string
+          logo_url?: string | null
+          primary_color?: string
+          updated_at?: string
+          white_label_enabled?: boolean
+        }
+        Update: {
+          agency_business_id?: string
+          created_at?: string
+          custom_domain?: string | null
+          id?: string
+          logo_url?: string | null
+          primary_color?: string
+          updated_at?: string
+          white_label_enabled?: boolean
+        }
+        Relationships: []
+      }
       ai_logs: {
         Row: {
           action: string
@@ -82,6 +115,36 @@ export type Database = {
           revenue_goal?: number | null
           timezone?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      client_mappings: {
+        Row: {
+          agency_business_id: string
+          billing_split: number
+          client_business_id: string
+          client_label: string | null
+          created_at: string
+          id: string
+          status: string
+        }
+        Insert: {
+          agency_business_id: string
+          billing_split?: number
+          client_business_id: string
+          client_label?: string | null
+          created_at?: string
+          id?: string
+          status?: string
+        }
+        Update: {
+          agency_business_id?: string
+          billing_split?: number
+          client_business_id?: string
+          client_label?: string | null
+          created_at?: string
+          id?: string
+          status?: string
         }
         Relationships: []
       }
@@ -211,6 +274,45 @@ export type Database = {
           },
         ]
       }
+      projections: {
+        Row: {
+          budget_amount: number
+          business_id: string
+          confidence: number
+          created_at: string
+          from_channel: string
+          id: string
+          projected_roas: number
+          risk_level: string
+          status: string
+          to_channel: string
+        }
+        Insert: {
+          budget_amount: number
+          business_id: string
+          confidence: number
+          created_at?: string
+          from_channel: string
+          id?: string
+          projected_roas: number
+          risk_level: string
+          status?: string
+          to_channel: string
+        }
+        Update: {
+          budget_amount?: number
+          business_id?: string
+          confidence?: number
+          created_at?: string
+          from_channel?: string
+          id?: string
+          projected_roas?: number
+          risk_level?: string
+          status?: string
+          to_channel?: string
+        }
+        Relationships: []
+      }
       reviews: {
         Row: {
           author: string | null
@@ -254,6 +356,50 @@ export type Database = {
             columns: ["business_id"]
             isOneToOne: false
             referencedRelation: "businesses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      roi_receipts: {
+        Row: {
+          actual_impact: number | null
+          business_id: string
+          created_at: string
+          delta_percent: number | null
+          estimated_impact: number
+          id: string
+          projection_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          actual_impact?: number | null
+          business_id: string
+          created_at?: string
+          delta_percent?: number | null
+          estimated_impact: number
+          id?: string
+          projection_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          actual_impact?: number | null
+          business_id?: string
+          created_at?: string
+          delta_percent?: number | null
+          estimated_impact?: number
+          id?: string
+          projection_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roi_receipts_projection_id_fkey"
+            columns: ["projection_id"]
+            isOneToOne: false
+            referencedRelation: "projections"
             referencedColumns: ["id"]
           },
         ]
