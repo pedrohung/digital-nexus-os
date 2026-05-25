@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { Sparkles, TrendingUp, ArrowRight } from "lucide-react";
+import { TrendingUp, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import ROIReceipt from "@/components/roi/ROIReceipt";
 import {

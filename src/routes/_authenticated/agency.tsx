@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { Building2, Trash2, Plus } from "lucide-react";
+import { Trash2, Plus } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import WhiteLabelToggle from "@/components/agency/WhiteLabelToggle";
 import {
