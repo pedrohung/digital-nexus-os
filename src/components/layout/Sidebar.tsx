@@ -2,12 +2,14 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard, Search, Star, Megaphone, PenSquare, Mail,
   BarChart3, Bot, Settings, LogOut, ChevronLeft, ChevronRight, Sparkles,
+  TrendingUp, Building2,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const nav = [
   { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/predictive", icon: TrendingUp, label: "Predictivo" },
   { to: "/seo", icon: Search, label: "SEO" },
   { to: "/reputation", icon: Star, label: "Reputación" },
   { to: "/ads", icon: Megaphone, label: "Publicidad" },
@@ -15,6 +17,7 @@ const nav = [
   { to: "/email", icon: Mail, label: "Email" },
   { to: "/analytics", icon: BarChart3, label: "ROI" },
   { to: "/copilot", icon: Bot, label: "AI Co-Pilot" },
+  { to: "/agency", icon: Building2, label: "Agencia" },
   { to: "/settings", icon: Settings, label: "Ajustes" },
 ] as const;
 
