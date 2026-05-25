@@ -15,12 +15,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedSeoRouteImport } from './routes/_authenticated/seo'
 import { Route as AuthenticatedReputationRouteImport } from './routes/_authenticated/reputation'
+import { Route as AuthenticatedPredictiveRouteImport } from './routes/_authenticated/predictive'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedEmailRouteImport } from './routes/_authenticated/email'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedCopilotRouteImport } from './routes/_authenticated/copilot'
 import { Route as AuthenticatedContentRouteImport } from './routes/_authenticated/content'
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
+import { Route as AuthenticatedAgencyRouteImport } from './routes/_authenticated/agency'
 import { Route as AuthenticatedAdsRouteImport } from './routes/_authenticated/ads'
 
 const LoginRoute = LoginRouteImport.update({
@@ -50,6 +52,11 @@ const AuthenticatedSeoRoute = AuthenticatedSeoRouteImport.update({
 const AuthenticatedReputationRoute = AuthenticatedReputationRouteImport.update({
   id: '/reputation',
   path: '/reputation',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPredictiveRoute = AuthenticatedPredictiveRouteImport.update({
+  id: '/predictive',
+  path: '/predictive',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
@@ -82,6 +89,11 @@ const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedAgencyRoute = AuthenticatedAgencyRouteImport.update({
+  id: '/agency',
+  path: '/agency',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedAdsRoute = AuthenticatedAdsRouteImport.update({
   id: '/ads',
   path: '/ads',
@@ -92,12 +104,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/ads': typeof AuthenticatedAdsRoute
+  '/agency': typeof AuthenticatedAgencyRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/content': typeof AuthenticatedContentRoute
   '/copilot': typeof AuthenticatedCopilotRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/email': typeof AuthenticatedEmailRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/predictive': typeof AuthenticatedPredictiveRoute
   '/reputation': typeof AuthenticatedReputationRoute
   '/seo': typeof AuthenticatedSeoRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -106,12 +120,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/ads': typeof AuthenticatedAdsRoute
+  '/agency': typeof AuthenticatedAgencyRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/content': typeof AuthenticatedContentRoute
   '/copilot': typeof AuthenticatedCopilotRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/email': typeof AuthenticatedEmailRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/predictive': typeof AuthenticatedPredictiveRoute
   '/reputation': typeof AuthenticatedReputationRoute
   '/seo': typeof AuthenticatedSeoRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -122,12 +138,14 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/login': typeof LoginRoute
   '/_authenticated/ads': typeof AuthenticatedAdsRoute
+  '/_authenticated/agency': typeof AuthenticatedAgencyRoute
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
   '/_authenticated/content': typeof AuthenticatedContentRoute
   '/_authenticated/copilot': typeof AuthenticatedCopilotRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/email': typeof AuthenticatedEmailRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/predictive': typeof AuthenticatedPredictiveRoute
   '/_authenticated/reputation': typeof AuthenticatedReputationRoute
   '/_authenticated/seo': typeof AuthenticatedSeoRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
@@ -138,12 +156,14 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/ads'
+    | '/agency'
     | '/analytics'
     | '/content'
     | '/copilot'
     | '/dashboard'
     | '/email'
     | '/onboarding'
+    | '/predictive'
     | '/reputation'
     | '/seo'
     | '/settings'
@@ -152,12 +172,14 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/ads'
+    | '/agency'
     | '/analytics'
     | '/content'
     | '/copilot'
     | '/dashboard'
     | '/email'
     | '/onboarding'
+    | '/predictive'
     | '/reputation'
     | '/seo'
     | '/settings'
@@ -167,12 +189,14 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/login'
     | '/_authenticated/ads'
+    | '/_authenticated/agency'
     | '/_authenticated/analytics'
     | '/_authenticated/content'
     | '/_authenticated/copilot'
     | '/_authenticated/dashboard'
     | '/_authenticated/email'
     | '/_authenticated/onboarding'
+    | '/_authenticated/predictive'
     | '/_authenticated/reputation'
     | '/_authenticated/seo'
     | '/_authenticated/settings'
@@ -228,6 +252,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedReputationRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/predictive': {
+      id: '/_authenticated/predictive'
+      path: '/predictive'
+      fullPath: '/predictive'
+      preLoaderRoute: typeof AuthenticatedPredictiveRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
@@ -270,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/agency': {
+      id: '/_authenticated/agency'
+      path: '/agency'
+      fullPath: '/agency'
+      preLoaderRoute: typeof AuthenticatedAgencyRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/ads': {
       id: '/_authenticated/ads'
       path: '/ads'
@@ -282,12 +320,14 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteChildren {
   AuthenticatedAdsRoute: typeof AuthenticatedAdsRoute
+  AuthenticatedAgencyRoute: typeof AuthenticatedAgencyRoute
   AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
   AuthenticatedContentRoute: typeof AuthenticatedContentRoute
   AuthenticatedCopilotRoute: typeof AuthenticatedCopilotRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedEmailRoute: typeof AuthenticatedEmailRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPredictiveRoute: typeof AuthenticatedPredictiveRoute
   AuthenticatedReputationRoute: typeof AuthenticatedReputationRoute
   AuthenticatedSeoRoute: typeof AuthenticatedSeoRoute
   AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
@@ -295,12 +335,14 @@ interface AuthenticatedRouteChildren {
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdsRoute: AuthenticatedAdsRoute,
+  AuthenticatedAgencyRoute: AuthenticatedAgencyRoute,
   AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
   AuthenticatedContentRoute: AuthenticatedContentRoute,
   AuthenticatedCopilotRoute: AuthenticatedCopilotRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedEmailRoute: AuthenticatedEmailRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPredictiveRoute: AuthenticatedPredictiveRoute,
   AuthenticatedReputationRoute: AuthenticatedReputationRoute,
   AuthenticatedSeoRoute: AuthenticatedSeoRoute,
   AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
