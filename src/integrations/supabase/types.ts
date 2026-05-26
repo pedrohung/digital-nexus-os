@@ -85,6 +85,33 @@ export type Database = {
           },
         ]
       }
+      budget_swarm_executions: {
+        Row: {
+          business_id: string
+          efficiency_gain_percent: number
+          executed_at: string
+          id: string
+          log_details: Json
+          total_budget_reallocated: number
+        }
+        Insert: {
+          business_id: string
+          efficiency_gain_percent: number
+          executed_at?: string
+          id?: string
+          log_details?: Json
+          total_budget_reallocated: number
+        }
+        Update: {
+          business_id?: string
+          efficiency_gain_percent?: number
+          executed_at?: string
+          id?: string
+          log_details?: Json
+          total_budget_reallocated?: number
+        }
+        Relationships: []
+      }
       businesses: {
         Row: {
           created_at: string
@@ -194,6 +221,69 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      intercepted_reviews: {
+        Row: {
+          business_id: string
+          created_at: string
+          customer_name: string
+          feedback_text: string | null
+          id: string
+          score: number
+          sentiment_score: number | null
+          status: string
+        }
+        Insert: {
+          business_id: string
+          created_at?: string
+          customer_name: string
+          feedback_text?: string | null
+          id?: string
+          score: number
+          sentiment_score?: number | null
+          status?: string
+        }
+        Update: {
+          business_id?: string
+          created_at?: string
+          customer_name?: string
+          feedback_text?: string | null
+          id?: string
+          score?: number
+          sentiment_score?: number | null
+          status?: string
+        }
+        Relationships: []
+      }
+      local_grid_audits: {
+        Row: {
+          average_rank: number
+          business_id: string
+          competitor_data: Json
+          created_at: string
+          grid_size: number
+          id: string
+          keyword: string
+        }
+        Insert: {
+          average_rank: number
+          business_id: string
+          competitor_data?: Json
+          created_at?: string
+          grid_size?: number
+          id?: string
+          keyword: string
+        }
+        Update: {
+          average_rank?: number
+          business_id?: string
+          competitor_data?: Json
+          created_at?: string
+          grid_size?: number
+          id?: string
+          keyword?: string
+        }
+        Relationships: []
       }
       metrics: {
         Row: {
