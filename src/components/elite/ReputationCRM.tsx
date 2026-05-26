@@ -87,7 +87,7 @@ export default function ReputationCRM() {
           </div>
           <div className="bg-background/60 p-3 border border-border rounded-lg space-y-1">
             <p className="text-[10px] text-muted-foreground uppercase font-bold">Respuesta sugerida por Nexus AI</p>
-            <p className="text-foreground/90 leading-relaxed italic">"{mutation.aiResponseSafe ?? mutation.data.aiResponse}"</p>
+            <p className="text-foreground/90 leading-relaxed italic">"{mutation.data.aiResponse}"</p>
           </div>
         </div>
       )}
