@@ -17,6 +17,7 @@ import { Route as AuthenticatedSeoRouteImport } from './routes/_authenticated/se
 import { Route as AuthenticatedReputationRouteImport } from './routes/_authenticated/reputation'
 import { Route as AuthenticatedPredictiveRouteImport } from './routes/_authenticated/predictive'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedNexusEliteRouteImport } from './routes/_authenticated/nexus-elite'
 import { Route as AuthenticatedEmailRouteImport } from './routes/_authenticated/email'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedCopilotRouteImport } from './routes/_authenticated/copilot'
@@ -62,6 +63,11 @@ const AuthenticatedPredictiveRoute = AuthenticatedPredictiveRouteImport.update({
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedNexusEliteRoute = AuthenticatedNexusEliteRouteImport.update({
+  id: '/nexus-elite',
+  path: '/nexus-elite',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedEmailRoute = AuthenticatedEmailRouteImport.update({
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/copilot': typeof AuthenticatedCopilotRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/email': typeof AuthenticatedEmailRoute
+  '/nexus-elite': typeof AuthenticatedNexusEliteRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/predictive': typeof AuthenticatedPredictiveRoute
   '/reputation': typeof AuthenticatedReputationRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/copilot': typeof AuthenticatedCopilotRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/email': typeof AuthenticatedEmailRoute
+  '/nexus-elite': typeof AuthenticatedNexusEliteRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/predictive': typeof AuthenticatedPredictiveRoute
   '/reputation': typeof AuthenticatedReputationRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/_authenticated/copilot': typeof AuthenticatedCopilotRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/email': typeof AuthenticatedEmailRoute
+  '/_authenticated/nexus-elite': typeof AuthenticatedNexusEliteRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/predictive': typeof AuthenticatedPredictiveRoute
   '/_authenticated/reputation': typeof AuthenticatedReputationRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/copilot'
     | '/dashboard'
     | '/email'
+    | '/nexus-elite'
     | '/onboarding'
     | '/predictive'
     | '/reputation'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/copilot'
     | '/dashboard'
     | '/email'
+    | '/nexus-elite'
     | '/onboarding'
     | '/predictive'
     | '/reputation'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/_authenticated/copilot'
     | '/_authenticated/dashboard'
     | '/_authenticated/email'
+    | '/_authenticated/nexus-elite'
     | '/_authenticated/onboarding'
     | '/_authenticated/predictive'
     | '/_authenticated/reputation'
@@ -266,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/nexus-elite': {
+      id: '/_authenticated/nexus-elite'
+      path: '/nexus-elite'
+      fullPath: '/nexus-elite'
+      preLoaderRoute: typeof AuthenticatedNexusEliteRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/email': {
       id: '/_authenticated/email'
       path: '/email'
@@ -326,6 +345,7 @@ interface AuthenticatedRouteChildren {
   AuthenticatedCopilotRoute: typeof AuthenticatedCopilotRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedEmailRoute: typeof AuthenticatedEmailRoute
+  AuthenticatedNexusEliteRoute: typeof AuthenticatedNexusEliteRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedPredictiveRoute: typeof AuthenticatedPredictiveRoute
   AuthenticatedReputationRoute: typeof AuthenticatedReputationRoute
@@ -341,6 +361,7 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedCopilotRoute: AuthenticatedCopilotRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedEmailRoute: AuthenticatedEmailRoute,
+  AuthenticatedNexusEliteRoute: AuthenticatedNexusEliteRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedPredictiveRoute: AuthenticatedPredictiveRoute,
   AuthenticatedReputationRoute: AuthenticatedReputationRoute,
@@ -360,3 +381,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

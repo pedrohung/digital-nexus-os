@@ -2,13 +2,14 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard, Search, Star, Megaphone, PenSquare, Mail,
   BarChart3, Bot, Settings, LogOut, ChevronLeft, ChevronRight, Sparkles,
-  TrendingUp, Building2,
+  TrendingUp, Building2, Zap,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const nav = [
   { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/nexus-elite", icon: Zap, label: "Élite Core" },
   { to: "/predictive", icon: TrendingUp, label: "Predictivo" },
   { to: "/seo", icon: Search, label: "SEO" },
   { to: "/reputation", icon: Star, label: "Reputación" },
