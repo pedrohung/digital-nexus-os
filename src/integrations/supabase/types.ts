@@ -175,6 +175,102 @@ export type Database = {
         }
         Relationships: []
       }
+      competitor_shadow_logs: {
+        Row: {
+          business_id: string
+          competitor_name: string
+          created_at: string
+          detected_change_type: string
+          id: string
+          log_details: Json
+          severity_level: string
+          tracked_url: string | null
+        }
+        Insert: {
+          business_id: string
+          competitor_name: string
+          created_at?: string
+          detected_change_type: string
+          id?: string
+          log_details?: Json
+          severity_level: string
+          tracked_url?: string | null
+        }
+        Update: {
+          business_id?: string
+          competitor_name?: string
+          created_at?: string
+          detected_change_type?: string
+          id?: string
+          log_details?: Json
+          severity_level?: string
+          tracked_url?: string | null
+        }
+        Relationships: []
+      }
+      content_streams: {
+        Row: {
+          business_id: string
+          campaign_core_topic: string
+          created_at: string
+          distribution_status: string
+          generated_assets: Json
+          id: string
+          scheduled_for: string | null
+        }
+        Insert: {
+          business_id: string
+          campaign_core_topic: string
+          created_at?: string
+          distribution_status?: string
+          generated_assets?: Json
+          id?: string
+          scheduled_for?: string | null
+        }
+        Update: {
+          business_id?: string
+          campaign_core_topic?: string
+          created_at?: string
+          distribution_status?: string
+          generated_assets?: Json
+          id?: string
+          scheduled_for?: string | null
+        }
+        Relationships: []
+      }
+      customer_ltv_retention: {
+        Row: {
+          business_id: string
+          calculated_ltv: number
+          churn_risk_percent: number
+          created_at: string
+          customer_identifier: string
+          id: string
+          next_best_action: string
+          updated_at: string
+        }
+        Insert: {
+          business_id: string
+          calculated_ltv: number
+          churn_risk_percent: number
+          created_at?: string
+          customer_identifier: string
+          id?: string
+          next_best_action: string
+          updated_at?: string
+        }
+        Update: {
+          business_id?: string
+          calculated_ltv?: number
+          churn_risk_percent?: number
+          created_at?: string
+          customer_identifier?: string
+          id?: string
+          next_best_action?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       integrations: {
         Row: {
           access_token: string | null
