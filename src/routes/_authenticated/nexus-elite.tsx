@@ -6,6 +6,8 @@ import DealCloserPitch from "@/components/elite/DealCloserPitch";
 import CompetitorShadow from "@/components/crown/CompetitorShadow";
 import ContentStream from "@/components/crown/ContentStream";
 import RetentionLTV from "@/components/crown/RetentionLTV";
+import InstantLander from "@/components/crown/InstantLander";
+import RoiReporter from "@/components/crown/RoiReporter";
 
 export const Route = createFileRoute("/_authenticated/nexus-elite")({
   component: NexusEliteDashboard,
@@ -45,6 +47,16 @@ function NexusEliteDashboard() {
           <div className="xl:col-span-2">
             <ContentStream />
           </div>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          Conversion & Executive Finance
+        </h2>
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+          <InstantLander />
+          <RoiReporter />
         </div>
       </section>
     </div>

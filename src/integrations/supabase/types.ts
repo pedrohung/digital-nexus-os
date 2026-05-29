@@ -271,6 +271,39 @@ export type Database = {
         }
         Relationships: []
       }
+      financial_roi_reports: {
+        Row: {
+          business_id: string
+          calculated_roas: number
+          created_at: string
+          executive_summary: string | null
+          id: string
+          report_period: string
+          revenue_generated: number
+          total_spend: number
+        }
+        Insert: {
+          business_id: string
+          calculated_roas: number
+          created_at?: string
+          executive_summary?: string | null
+          id?: string
+          report_period: string
+          revenue_generated: number
+          total_spend: number
+        }
+        Update: {
+          business_id?: string
+          calculated_roas?: number
+          created_at?: string
+          executive_summary?: string | null
+          id?: string
+          report_period?: string
+          revenue_generated?: number
+          total_spend?: number
+        }
+        Relationships: []
+      }
       integrations: {
         Row: {
           access_token: string | null
@@ -378,6 +411,42 @@ export type Database = {
           grid_size?: number
           id?: string
           keyword?: string
+        }
+        Relationships: []
+      }
+      marketing_landings: {
+        Row: {
+          business_id: string
+          conversion_count: number
+          created_at: string
+          html_content: string
+          id: string
+          performance_score: number
+          slug: string
+          target_offer: string | null
+          title: string
+        }
+        Insert: {
+          business_id: string
+          conversion_count?: number
+          created_at?: string
+          html_content: string
+          id?: string
+          performance_score?: number
+          slug: string
+          target_offer?: string | null
+          title: string
+        }
+        Update: {
+          business_id?: string
+          conversion_count?: number
+          created_at?: string
+          html_content?: string
+          id?: string
+          performance_score?: number
+          slug?: string
+          target_offer?: string | null
+          title?: string
         }
         Relationships: []
       }
