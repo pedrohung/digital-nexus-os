@@ -26,7 +26,7 @@ export const fetchComplianceLogs = createServerFn({ method: "GET" })
         { action_type: "API_TOKEN_ROTATION", target_module: "Integrations", compliance_hash: "sha256_b7d1f29c" },
       ];
       await supabase.from("compliance_audit_ledgers").insert(
-        seed.map((s) => ({ ...s, business_id: profile.business_id })),
+        seed.map((s) => ({ ...s, business_id: businessId })),
       );
       const { data: refreshed } = await supabase
         .from("compliance_audit_ledgers")
