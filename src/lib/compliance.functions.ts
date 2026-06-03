@@ -11,6 +11,7 @@ export const fetchComplianceLogs = createServerFn({ method: "GET" })
       .maybeSingle();
 
     if (!profile?.business_id) throw new Error("Business context missing");
+    const businessId: string = profile.business_id;
 
     const { data: existing } = await supabase
       .from("compliance_audit_ledgers")
