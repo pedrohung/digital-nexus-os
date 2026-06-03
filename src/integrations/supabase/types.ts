@@ -208,6 +208,33 @@ export type Database = {
         }
         Relationships: []
       }
+      compliance_audit_ledgers: {
+        Row: {
+          action_type: string
+          business_id: string
+          compliance_hash: string
+          created_at: string
+          id: string
+          target_module: string
+        }
+        Insert: {
+          action_type: string
+          business_id: string
+          compliance_hash: string
+          created_at?: string
+          id?: string
+          target_module: string
+        }
+        Update: {
+          action_type?: string
+          business_id?: string
+          compliance_hash?: string
+          created_at?: string
+          id?: string
+          target_module?: string
+        }
+        Relationships: []
+      }
       content_streams: {
         Row: {
           business_id: string
