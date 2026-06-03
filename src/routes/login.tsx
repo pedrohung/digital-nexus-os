@@ -70,7 +70,7 @@ function LoginPage() {
           <h1 className="text-4xl font-bold leading-tight">El sistema operativo de crecimiento digital.</h1>
           <p className="text-lg opacity-90">SEO, Ads, Reputación, Email y un Co-Pilot de IA con guardrails. Todo unificado, todo medible.</p>
         </div>
-        <p className="text-sm opacity-75">v1.0 • Lovable Cloud</p>
+        <p className="text-sm opacity-75">v2.2. Astrum Shielda Cloud</p>
       </div>
 
       <div className="flex items-center justify-center p-6">

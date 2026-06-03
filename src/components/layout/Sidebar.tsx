@@ -93,7 +93,7 @@ export function Sidebar({ collapsed, onToggle, userEmail }: Props) {
           <LogOut className="h-4 w-4 shrink-0" />
           {!collapsed && <span>Cerrar sesión</span>}
         </button>
-        {!collapsed && <div className="text-[10px] text-muted-foreground/60 px-2">v1.0 • Lovable Cloud</div>}
+        {!collapsed && <div className="text-[10px] text-muted-foreground/60 px-2">v2.2. Astrum Shielda Cloud</div>}
       </div>
     </aside>
   );
