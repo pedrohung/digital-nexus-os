@@ -737,6 +737,7 @@ export type Database = {
     }
     Functions: {
       current_business_id: { Args: never; Returns: string }
+      is_business_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
