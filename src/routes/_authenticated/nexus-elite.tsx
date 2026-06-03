@@ -8,6 +8,8 @@ import ContentStream from "@/components/crown/ContentStream";
 import RetentionLTV from "@/components/crown/RetentionLTV";
 import InstantLander from "@/components/crown/InstantLander";
 import RoiReporter from "@/components/crown/RoiReporter";
+import ComplianceLedger from "@/components/crown/ComplianceLedger";
+import Footer from "@/components/branding/Footer";
 
 export const Route = createFileRoute("/_authenticated/nexus-elite")({
   component: NexusEliteDashboard,
