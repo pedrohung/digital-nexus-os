@@ -18,13 +18,19 @@ export const Route = createFileRoute("/_authenticated/nexus-elite")({
 function NexusEliteDashboard() {
   return (
     <div className="space-y-8">
-      <header className="space-y-1">
-        <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">
-          NEXUS360 OMNIPOTENT MARKETING HUB
-        </h1>
-        <p className="text-sm text-muted-foreground">
-          Inteligencia competitiva, automatización omnicanal y crecimiento de valor perpetuo.
-        </p>
+      <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div className="space-y-1">
+          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">
+            NEXUS360 OMNIPOTENT MARKETING HUB
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Inteligencia competitiva, automatización omnicanal y crecimiento de valor perpetuo.
+          </p>
+        </div>
+        <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+          Engine Core · powered by{" "}
+          <span className="lowercase text-emerald-400">astrumshielda</span>
+        </span>
       </header>
 
       <section className="space-y-3">
@@ -61,6 +67,15 @@ function NexusEliteDashboard() {
           <RoiReporter />
         </div>
       </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+          Governance & Compliance
+        </h2>
+        <ComplianceLedger />
+      </section>
+
+      <Footer />
     </div>
   );
 }
