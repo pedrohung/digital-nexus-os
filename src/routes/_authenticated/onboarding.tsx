@@ -23,7 +23,19 @@ const STEPS = [
   { id: "review", title: "Confirmación", desc: "Revisa y arranca." },
 ] as const;
 
-const INDUSTRIES = ["E-commerce", "SaaS", "Servicios profesionales", "Salud", "Educación", "Hospitalidad", "Otro"];
+const INDUSTRIES = [
+  "Tecnología & Software",
+  "Ciberseguridad",
+  "IA & Automatización",
+  "SaaS & Cloud",
+  "E-commerce",
+  "Servicios profesionales",
+  "Consultoría IT",
+  "Salud",
+  "Educación",
+  "Hospitalidad",
+  "Otro"
+];
 const CHANNELS = ["google_ads", "meta", "tiktok", "seo_organico", "email", "referidos"];
 
 function OnboardingPage() {
