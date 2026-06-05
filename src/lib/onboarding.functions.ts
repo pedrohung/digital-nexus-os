@@ -10,13 +10,16 @@ const CreateBusinessSchema = z.object({
   primary_channel: z.string().trim().min(1).max(40).optional(),
 });
 
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
+
 export const createBusiness = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => CreateBusinessSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
 
-    const { data: business, error: bizErr } = await supabase
+    // Use admin client to bypass RLS during initial creation (before profile link exists)
+    const { data: business, error: bizErr } = await supabaseAdmin
       .from("businesses")
       .insert({
         name: data.name,
