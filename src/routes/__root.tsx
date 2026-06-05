@@ -45,12 +45,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
             Reintentar
           </button>
-          <a href="/" className="rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-accent/10">Inicio</a>
+          <a
+            href="/"
+            className="rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-accent/10"
+          >
+            Inicio
+          </a>
         </div>
       </div>
     </div>
@@ -63,16 +71,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "NEXUS360 — Growth OS" },
-      { name: "description", content: "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails." },
+      {
+        name: "description",
+        content:
+          "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails.",
+      },
       { name: "author", content: "NEXUS360" },
       { property: "og:title", content: "NEXUS360 — Growth OS" },
-      { property: "og:description", content: "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails." },
+      {
+        property: "og:description",
+        content:
+          "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "NEXUS360 — Growth OS" },
-      { name: "twitter:description", content: "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b34bc7f5-9f93-48a8-98a1-90ce588f859b/id-preview-9e1dc8d5--fe6a6aaa-4740-40e4-8b21-d43f7f383b11.lovable.app-1780084084473.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b34bc7f5-9f93-48a8-98a1-90ce588f859b/id-preview-9e1dc8d5--fe6a6aaa-4740-40e4-8b21-d43f7f383b11.lovable.app-1780084084473.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Sistema operativo de crecimiento digital todo-en-uno: SEO, Ads, Reputación, Email e IA con guardrails.",
+      },
+      { property: "og:site_name", content: "NEXUS360" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -111,7 +130,9 @@ function AuthSync() {
   const router = useRouter();
   const queryClient = useQueryClient();
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
       router.invalidate();
       queryClient.invalidateQueries();
     });
